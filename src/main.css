@@ -9,27 +9,18 @@
   height: inherit;
 }
 
-@font-face {
-  font-family: CoopeHewitt;
-  src: url("/public/font.otf") format("opentype");
-}
-
-@font-face {
-  font-family: CoopeHewitt;
-  font-style: italic;
-  src: url("/public/fontItalic.otf") format("opentype");
-}
-
 * {
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Grande', 'Bitstream Vera Sans', 'Helvetica Neue', sans-serif;
-  color: #293c4b;
-}
-
 h1 {
   font-size: 30px;
+}
+
+img:hover {
+  box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  transform: scale(1.25);
+  position:relative;
+  z-index:5;
 }

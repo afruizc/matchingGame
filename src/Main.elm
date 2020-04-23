@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Html exposing (Html, button, div, h1, h2, img, text)
-import Html.Attributes exposing (class, src, style, width)
+import Html.Attributes exposing (attribute, class, src, style, width)
 import Html.Events exposing (onClick)
 
 
@@ -43,17 +43,17 @@ initialItems =
     , { belongsTo = greenCategory, name = "/images/g_parrot.jpg", id = 1 }
     , { belongsTo = greenCategory, name = "/images/g_slug.jpg", id = 2 }
     , { belongsTo = greenCategory, name = "/images/g_turtle.jpg", id = 3 }
-    , { belongsTo = orangeCategory, name = "/images/o_clownfish.jpg", id = 4 }
-    , { belongsTo = orangeCategory, name = "/images/o_tiger.jpg", id = 5 }
-    , { belongsTo = orangeCategory, name = "/images/o_tucan.jpg", id = 6 }
-    , { belongsTo = redCategory, name = "/images/r_butterfly.jpg", id = 7 }
     , { belongsTo = redCategory, name = "/images/r_cardinal.jpg", id = 8 }
-    , { belongsTo = redCategory, name = "/images/r_crab.jpg", id = 9 }
-    , { belongsTo = redCategory, name = "/images/r_ladyBug.jpg", id = 10 }
-    , { belongsTo = yellowCategory, name = "/images/y_bettle.jpg", id = 11 }
+    , { belongsTo = orangeCategory, name = "/images/o_clownfish.jpg", id = 4 }
     , { belongsTo = yellowCategory, name = "/images/y_chicks.jpg", id = 12 }
     , { belongsTo = yellowCategory, name = "/images/y_seahorse.jpg", id = 13 }
     , { belongsTo = yellowCategory, name = "/images/y_snake.jpg", id = 14 }
+    , { belongsTo = redCategory, name = "/images/r_crab.jpg", id = 9 }
+    , { belongsTo = redCategory, name = "/images/r_ladyBug.jpg", id = 10 }
+    , { belongsTo = yellowCategory, name = "/images/y_bettle.jpg", id = 11 }
+    , { belongsTo = orangeCategory, name = "/images/o_tucan.jpg", id = 6 }
+    , { belongsTo = redCategory, name = "/images/r_butterfly.jpg", id = 7 }
+    , { belongsTo = orangeCategory, name = "/images/o_tiger.jpg", id = 5 }
     ]
 
 
@@ -82,7 +82,11 @@ greenCategory =
 
 
 blueCategory =
-    { name = "blue", id = 5 }
+    { name = "blue", id = 4 }
+
+
+purpleCategory =
+    { name = "purple", id = 5 }
 
 
 initialGameState =
@@ -90,10 +94,12 @@ initialGameState =
 
 
 categories =
-    [ orangeCategory
+    [ yellowCategory
+    , orangeCategory
     , redCategory
-    , yellowCategory
     , greenCategory
+    , blueCategory
+    , purpleCategory
     ]
 
 
@@ -136,7 +142,6 @@ makeCategoryPlay id state =
                 selectedItem : Item
                 selectedItem =
                     List.filter (\item -> item.id == x) state.items
-                        |> Debug.log "selectedItem"
                         |> List.head
                         |> Maybe.withDefault noItem
 
@@ -215,6 +220,7 @@ buttonCSS color =
     , style "color" "white"
     , style "text-transform" "uppercase"
     , style "text-shadow" "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"
+    , style "cursor" "pointer"
     , class "col"
     , style "min-height" "150px"
     , class "d-flex align-items-center justify-content-center"
@@ -270,16 +276,37 @@ renderModel model =
                     drawCategory
                     model.colors
 
-        renderItems items =
+        renderItems items selectedItemId =
             let
                 renderItem item =
-                    img
-                        [ style "height" "150px"
+                    div
+                        [ class "col-2"
+                        , class "p-0"
+                        , style "max-width" "100%"
+                        , style "height" "auto"
+                        , style "cursor" "pointer"
                         , onClick <| PlayItem item.id
-                        , src item.name
-                        , class "col"
                         ]
-                        [ text item.name ]
+                        [ img
+                            [ --, style "-webkit-transform" "rotate(-6deg)"
+                              --, style "-o-transform" "rotate(-6deg)"
+                              --, style "-moz-transform" "rotate(-6deg)"
+                              --, style "transform" "rotate(-6deg)"
+                              src item.name
+                            , style "margin" "1rem"
+                            , style "box-shadow" "5px 5px 7px rgba(33,33,33,.7)"
+                            , class "img-fluid"
+                            , class "img-thumbnail"
+                            , style "transform"
+                                (if item.id == selectedItemId then
+                                    "scale(1.25)"
+
+                                 else
+                                    "scale(1.0)"
+                                )
+                            ]
+                            [ text item.name ]
+                        ]
             in
             List.map renderItem items
 
@@ -288,7 +315,7 @@ renderModel model =
                 itemList =
                     case model.gameState of
                         Playing state ->
-                            renderItems state.items
+                            renderItems state.items <| Maybe.withDefault -1 state.selectedItemId
 
                         _ ->
                             []
@@ -297,6 +324,7 @@ renderModel model =
     in
     div
         [ style "width" "100%"
+        , class "mb-4"
         ]
         [ categoriesView
         , itemsView
