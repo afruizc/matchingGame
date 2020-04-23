@@ -1,5 +1,5 @@
 # Matching game
 
-![demo][demo.gif]
+![demo](demo.gif)
 
 A simple matching game. Have fun :)
