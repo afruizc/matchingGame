@@ -39,21 +39,21 @@ type alias PlayingGameState =
 
 
 initialItems =
-    [ { belongsTo = greenCategory, name = "/images/g_frog.jpg", id = 0 }
-    , { belongsTo = greenCategory, name = "/images/g_parrot.jpg", id = 1 }
+    [ { belongsTo = purpleCategory, name = "/images/p_salamander.jpg", id = 15 }
     , { belongsTo = greenCategory, name = "/images/g_slug.jpg", id = 2 }
+    , { belongsTo = blueCategory, name = "/images/b_whale.jpg", id = 12 }
+    , { belongsTo = redCategory, name = "/images/r_cardinal.jpg", id = 4 }
+    , { belongsTo = orangeCategory, name = "/images/o_clownfish.jpg", id = 5 }
+    , { belongsTo = yellowCategory, name = "/images/y_chicks.jpg", id = 6 }
+    , { belongsTo = redCategory, name = "/images/r_ladyBug.jpg", id = 7 }
+    , { belongsTo = yellowCategory, name = "/images/y_bettle.jpg", id = 8 }
     , { belongsTo = greenCategory, name = "/images/g_turtle.jpg", id = 3 }
-    , { belongsTo = redCategory, name = "/images/r_cardinal.jpg", id = 8 }
-    , { belongsTo = orangeCategory, name = "/images/o_clownfish.jpg", id = 4 }
-    , { belongsTo = yellowCategory, name = "/images/y_chicks.jpg", id = 12 }
-    , { belongsTo = yellowCategory, name = "/images/y_seahorse.jpg", id = 13 }
-    , { belongsTo = yellowCategory, name = "/images/y_snake.jpg", id = 14 }
-    , { belongsTo = redCategory, name = "/images/r_crab.jpg", id = 9 }
-    , { belongsTo = redCategory, name = "/images/r_ladyBug.jpg", id = 10 }
-    , { belongsTo = yellowCategory, name = "/images/y_bettle.jpg", id = 11 }
-    , { belongsTo = orangeCategory, name = "/images/o_tucan.jpg", id = 6 }
-    , { belongsTo = redCategory, name = "/images/r_butterfly.jpg", id = 7 }
-    , { belongsTo = orangeCategory, name = "/images/o_tiger.jpg", id = 5 }
+    , { belongsTo = blueCategory, name = "/images/b_jelly.jpg", id = 13 }
+    , { belongsTo = purpleCategory, name = "/images/p_bat.jpg", id = 14 }
+    , { belongsTo = greenCategory, name = "/images/g_frog.jpg", id = 0 }
+    , { belongsTo = orangeCategory, name = "/images/o_tucan.jpg", id = 9 }
+    , { belongsTo = redCategory, name = "/images/r_butterfly.jpg", id = 10 }
+    , { belongsTo = orangeCategory, name = "/images/o_tiger.jpg", id = 11 }
     ]
 
 
