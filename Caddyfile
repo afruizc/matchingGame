@@ -1,7 +1,9 @@
-ruizandr.es/matching_game {
-    file_server /matching_game
-}
+ruizandr.es
 
-ruizandr.es/hateball {
+encode zstd gzip
+file_server /matching_game/*
 
+route /hateball/* {
+    uri strip_prefix /hateball
+    reverse_proxy localhost:4001
 }
