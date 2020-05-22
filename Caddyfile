@@ -1,3 +1,7 @@
-ruizandr.es/matchingGame {
-    file_server ./matchingGame
+ruizandr.es/matching_game {
+    file_server /matching_game
+}
+
+ruizandr.es/hateball {
+
 }

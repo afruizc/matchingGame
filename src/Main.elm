@@ -1,8 +1,8 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, button, div, h1, h2, img, text)
-import Html.Attributes exposing (attribute, class, src, style, width)
+import Html exposing (Html, div, h1, h2, img, text)
+import Html.Attributes exposing (class, src, style)
 import Html.Events exposing (onClick)
 
 
@@ -292,7 +292,7 @@ renderModel model =
                               --, style "-o-transform" "rotate(-6deg)"
                               --, style "-moz-transform" "rotate(-6deg)"
                               --, style "transform" "rotate(-6deg)"
-                              src item.name
+                              src ("%PUBLIC_URL%" ++ item.name)
                             , style "margin" "1rem"
                             , style "box-shadow" "5px 5px 7px rgba(33,33,33,.7)"
                             , class "img-fluid"
